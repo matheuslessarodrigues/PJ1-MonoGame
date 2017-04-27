@@ -32,6 +32,9 @@ namespace MonoGame
 		{
 			// TODO: Add your initialization logic here
 
+			Viewport viewport = graphics.GraphicsDevice.Viewport;
+			ball.screenSize = new Vector2( viewport.Width, viewport.Height );
+
 			base.Initialize();
 		}
 
