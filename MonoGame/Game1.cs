@@ -45,7 +45,7 @@ namespace MonoGame
 			spriteBatch = new SpriteBatch( GraphicsDevice );
 
 			// TODO: use this.Content to load your game content here
-			//Content.Load<>()
+			ball.Load( Content );
 		}
 
 		/// <summary>
@@ -82,7 +82,9 @@ namespace MonoGame
 			GraphicsDevice.Clear( Color.CornflowerBlue );
 
 			// TODO: Add your drawing code here
-			ball.Draw();
+			spriteBatch.Begin();
+			ball.Draw( spriteBatch );
+			spriteBatch.End();
 
 			base.Draw( gameTime );
 		}
