@@ -9,7 +9,7 @@ namespace MonoGame
 		public Vector2 screenSize;
 
 		public Vector2 position = new Vector2( 0.0f, 0.0f );
-		public Vector2 velocity = new Vector2( 2.0f, 2.0f );
+		public Vector2 velocity = new Vector2( 100.0f, 100.0f );
 
 		public Texture2D texture;
 		public Color color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
@@ -19,9 +19,9 @@ namespace MonoGame
 			texture = content.Load<Texture2D>( "BallSprite" );
 		}
 
-		public void Move()
+		public void Move( GameTime gameTime )
 		{
-			position += velocity;
+			position += velocity * ( ( float ) gameTime.ElapsedGameTime.TotalMilliseconds * 0.001f );
 
 			if( position.Y < 0.0f || position.Y + texture.Bounds.Height > screenSize.Y )
 				velocity.Y *= -1.0f;
