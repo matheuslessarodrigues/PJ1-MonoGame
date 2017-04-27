@@ -9,10 +9,10 @@ namespace MonoGame
 	/// </summary>
 	public class Game1 : Game
 	{
-		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
+		private GraphicsDeviceManager graphics;
+		private SpriteBatch spriteBatch;
 
-		Ball ball;
+		private Ball ball;
 
 		public Game1()
 		{

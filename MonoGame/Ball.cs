@@ -6,8 +6,8 @@ namespace MonoGame
 {
 	public class Ball
 	{
-		public Vector2 position = new Vector2( 100.0f, 100.0f );
-		public Vector2 velocity = new Vector2( 0.0f, 0.0f );
+		public Vector2 position = new Vector2( 0.0f, 0.0f );
+		public Vector2 velocity = new Vector2( 1.0f, 1.0f );
 
 		public Texture2D texture;
 		public Color color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
@@ -19,7 +19,7 @@ namespace MonoGame
 
 		public void Move()
 		{
-			position += velocity;
+			//position += velocity;
 		}
 
 		public void Draw( SpriteBatch spriteBatch )

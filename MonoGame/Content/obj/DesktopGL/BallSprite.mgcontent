@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/BallSprite.png</SourceFile>
-  <SourceTime>2017-04-27T11:48:33.6708045-03:00</SourceTime>
+  <SourceTime>2017-04-27T11:54:52.5502892-03:00</SourceTime>
   <DestFile>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/bin/DesktopGL/BallSprite.xnb</DestFile>
-  <DestTime>2017-04-27T11:49:24.7171195-03:00</DestTime>
+  <DestTime>2017-04-27T11:55:05.6874373-03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T12:05:36-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
@@ -14,7 +14,7 @@
   </Parameters>
   <Parameters>
     <Key>ColorKeyEnabled</Key>
-    <Value>True</Value>
+    <Value>False</Value>
   </Parameters>
   <Parameters>
     <Key>GenerateMipmaps</Key>
