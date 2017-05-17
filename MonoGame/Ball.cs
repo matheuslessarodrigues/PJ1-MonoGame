@@ -21,7 +21,8 @@ namespace MonoGame
 
 		public void Move( GameTime gameTime )
 		{
-			position += velocity * ( ( float ) gameTime.ElapsedGameTime.TotalMilliseconds * 0.001f );
+			float deltaT = ( ( float ) gameTime.ElapsedGameTime.TotalMilliseconds * 0.001f );
+			position += velocity * deltaT;
 
 			if( position.Y < 0.0f || position.Y + texture.Bounds.Height > screenSize.Y )
 				velocity.Y *= -1.0f;

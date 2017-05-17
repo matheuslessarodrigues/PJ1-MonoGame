@@ -77,7 +77,7 @@ namespace MonoGame
 
 			// TODO: Add your update logic here
 			ball.Move( gameTime );
-			player.Move( gameTime );
+			player.Update( gameTime );
 
 			base.Update( gameTime );
 		}

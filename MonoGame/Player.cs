@@ -12,19 +12,33 @@ namespace MonoGame
 		public Texture2D texture;
 		public Color color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
 
+		public bool deveDesenhar = true;
+		public double contadorTempo = 0.0;
+
 		public void Load( ContentManager content )
 		{
 			texture = content.Load<Texture2D>( "PokemonSprite" );
 		}
 
-		public void Move( GameTime gameTime )
+		public void Update( GameTime gameTime )
 		{
-			
+			contadorTempo += gameTime.ElapsedGameTime.TotalMilliseconds;
+			if( contadorTempo > 100.0 )
+			{
+				if( deveDesenhar )
+					deveDesenhar = false;
+				else
+					deveDesenhar = true;
+				contadorTempo = 0.0;
+			}
 		}
 
 		public void Draw( SpriteBatch spriteBatch )
 		{
-			spriteBatch.Draw( texture, position, color );
+			if( deveDesenhar )
+			{
+				spriteBatch.Draw( texture, position, color );
+			}
 		}
 	}
 }
