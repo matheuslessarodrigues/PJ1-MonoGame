@@ -5,5 +5,9 @@
   <Config />
   <SourceFiles>
     <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/BallSprite.png</File>
+    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/PokemonSprite.png</File>
+    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/SpriteSprite.jpg</File>
+    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/Chico.png</File>
+    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/Pkmn.png</File>
   </SourceFiles>
 </SourceFileCollection>

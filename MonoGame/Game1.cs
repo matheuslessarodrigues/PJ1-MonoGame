@@ -13,6 +13,7 @@ namespace MonoGame
 		private SpriteBatch spriteBatch;
 
 		private Ball ball;
+		private Player player;
 
 		public Game1()
 		{
@@ -22,6 +23,7 @@ namespace MonoGame
 			Content.RootDirectory = "Content";
 
 			ball = new Ball();
+			player = new Player();
 		}
 
 		/// <summary>
@@ -51,6 +53,7 @@ namespace MonoGame
 
 			// TODO: use this.Content to load your game content here
 			ball.Load( Content );
+			player.Load( Content );
 		}
 
 		/// <summary>
@@ -74,6 +77,7 @@ namespace MonoGame
 
 			// TODO: Add your update logic here
 			ball.Move( gameTime );
+			player.Move( gameTime );
 
 			base.Update( gameTime );
 		}
@@ -84,11 +88,12 @@ namespace MonoGame
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw( GameTime gameTime )
 		{
-			GraphicsDevice.Clear( Color.CornflowerBlue );
+			GraphicsDevice.Clear( Color.Chocolate );
 
 			// TODO: Add your drawing code here
 			spriteBatch.Begin();
 			ball.Draw( spriteBatch );
+			player.Draw( spriteBatch );
 			spriteBatch.End();
 
 			base.Draw( gameTime );
