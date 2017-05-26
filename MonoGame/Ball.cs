@@ -1,39 +1,116 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame
 {
-	public class Ball
+	/// <summary>
+	/// This is the main type for your game.
+	/// </summary>
+	public class Game1 : Game
 	{
-		public Vector2 screenSize;
+		private GraphicsDeviceManager graphics;
+		private SpriteBatch spriteBatch;
 
-		public Vector2 position = new Vector2( 0.0f, 0.0f );
-		public Vector2 velocity = new Vector2( 100.0f, 100.0f );
+		private Ball ball;
+		private Player player;
+        private Tiro tiro;
 
-		public Texture2D texture;
-		public Color color = new Color( 1.0f, 1.0f, 1.0f, 1.0f );
-
-		public void Load( ContentManager content )
+		public Game1()
 		{
-			texture = content.Load<Texture2D>( "BallSprite" );
+			graphics = new GraphicsDeviceManager( this );
+			graphics.SynchronizeWithVerticalRetrace = false;
+
+			Content.RootDirectory = "Content";
+			player = new Player();
+
+			ball = new Ball();
+            ball.velocity = new Vector2(100.0f, 100.0f);
+            ball.textureName = "BallSprite";
+
+            tiro = new Tiro();
+            tiro.textureName = "bullet";
+            tiro.scale = 4.0f;
+        }
+
+		/// <summary>
+		/// Allows the game to perform any initialization it needs to before starting to run.
+		/// This is where it can query for any required services and load any non-graphic
+		/// related content.  Calling base.Initialize will enumerate through any components
+		/// and initialize them as well.
+		/// </summary>
+		protected override void Initialize()
+		{
+			// TODO: Add your initialization logic here
+
+			Viewport viewport = graphics.GraphicsDevice.Viewport;
+			ball.screenSize = new Vector2( viewport.Width, viewport.Height );
+
+			base.Initialize();
 		}
 
-		public void Move( GameTime gameTime )
+		/// <summary>
+		/// LoadContent will be called once per game and is the place to load
+		/// all of your content.
+		/// </summary>
+		protected override void LoadContent()
 		{
-			float deltaT = ( ( float ) gameTime.ElapsedGameTime.TotalMilliseconds * 0.001f );
-			position += velocity * deltaT;
+			// Create a new SpriteBatch, which can be used to draw textures.
+			spriteBatch = new SpriteBatch( GraphicsDevice );
 
-			if( position.Y < 0.0f || position.Y + texture.Bounds.Height > screenSize.Y )
-				velocity.Y *= -1.0f;
+			// TODO: use this.Content to load your game content here
+			ball.Load( Content );
+			player.Load( Content );
+            tiro.Load(Content);
 
-			if( position.X < 0.0f || position.X + texture.Bounds.Width > screenSize.X )
-				velocity.X *= -1.0f;
+        }
+
+		/// <summary>
+		/// UnloadContent will be called once per game and is the place to unload
+		/// game-specific content.
+		/// </summary>
+		protected override void UnloadContent()
+		{
+			// TODO: Unload any non ContentManager content here
 		}
 
-		public void Draw( SpriteBatch spriteBatch )
+		/// <summary>
+		/// Allows the game to run logic such as updating the world,
+		/// checking for collisions, gathering input, and playing audio.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Update( GameTime gameTime )
 		{
-			spriteBatch.Draw( texture, position, color );
+			if( GamePad.GetState( PlayerIndex.One ).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown( Keys.Escape ) )
+				Exit();
+
+			// TODO: Add your update logic here
+			ball.Move( gameTime );
+            tiro.Update(gameTime);
+
+			player.Update( gameTime );
+
+            player.TentaAtirar(tiro);
+
+			base.Update( gameTime );
+		}
+
+		/// <summary>
+		/// This is called when the game should draw itself.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Draw( GameTime gameTime )
+		{
+			GraphicsDevice.Clear( Color.Chocolate );
+
+			// TODO: Add your drawing code here
+			spriteBatch.Begin();
+			ball.Draw( spriteBatch );
+			player.Draw( spriteBatch );
+            tiro.Draw(spriteBatch);
+			spriteBatch.End();
+
+			base.Draw( gameTime );
 		}
 	}
 }
