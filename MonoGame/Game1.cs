@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -14,6 +14,7 @@ namespace MonoGame
 
 		private Ball ball;
 		private Player player;
+        private Tiro tiro;
 
 		public Game1()
 		{
@@ -23,7 +24,13 @@ namespace MonoGame
 			Content.RootDirectory = "Content";
 
 			ball = new Ball();
+            ball.velocity = new Vector2(100.0f, 100.0f);
+            ball.textureName = "BallSprite";
+
 			player = new Player();
+            tiro = new Tiro();
+            tiro.textureName = "BallSprite";
+            tiro.scale = 0.1f;
 		}
 
 		/// <summary>
@@ -54,6 +61,7 @@ namespace MonoGame
 			// TODO: use this.Content to load your game content here
 			ball.Load( Content );
 			player.Load( Content );
+            tiro.Load(Content);
 		}
 
 		/// <summary>
@@ -78,6 +86,8 @@ namespace MonoGame
 			// TODO: Add your update logic here
 			ball.Move( gameTime );
 			player.Update( gameTime );
+            player.TentaAtirar(tiro);
+            tiro.Update(gameTime);
 
 			base.Update( gameTime );
 		}
@@ -88,12 +98,13 @@ namespace MonoGame
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw( GameTime gameTime )
 		{
-			GraphicsDevice.Clear( Color.Chocolate );
+            GraphicsDevice.Clear( Color.Chocolate );
 
 			// TODO: Add your drawing code here
 			spriteBatch.Begin();
 			ball.Draw( spriteBatch );
 			player.Draw( spriteBatch );
+            tiro.Draw(spriteBatch);
 			spriteBatch.End();
 
 			base.Draw( gameTime );
