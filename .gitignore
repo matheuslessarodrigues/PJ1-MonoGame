@@ -1,3 +1,5 @@
 .vs/
 MonoGame/obj/
 MonoGame/bin/
+MonoGame/Content/bin/
+MonoGame/Content/obj/

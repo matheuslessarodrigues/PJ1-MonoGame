@@ -1,6 +1,7 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace MonoGame
 {
@@ -12,9 +13,7 @@ namespace MonoGame
 		private GraphicsDeviceManager graphics;
 		private SpriteBatch spriteBatch;
 
-		private Ball ball;
-		private Player player;
-        private Tiro tiro;
+        private World world = new World();
 
 		public Game1()
 		{
@@ -22,16 +21,7 @@ namespace MonoGame
 			graphics.SynchronizeWithVerticalRetrace = false;
 
 			Content.RootDirectory = "Content";
-
-			ball = new Ball();
-            ball.velocity = new Vector2(100.0f, 100.0f);
-            ball.textureName = "BallSprite";
-
-			player = new Player();
-            tiro = new Tiro();
-            tiro.textureName = "BallSprite";
-            tiro.scale = 0.1f;
-		}
+        }
 
 		/// <summary>
 		/// Allows the game to perform any initialization it needs to before starting to run.
@@ -44,7 +34,7 @@ namespace MonoGame
 			// TODO: Add your initialization logic here
 
 			Viewport viewport = graphics.GraphicsDevice.Viewport;
-			ball.screenSize = new Vector2( viewport.Width, viewport.Height );
+			//ball.screenSize = new Vector2( viewport.Width, viewport.Height );
 
 			base.Initialize();
 		}
@@ -58,10 +48,8 @@ namespace MonoGame
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch( GraphicsDevice );
 
-			// TODO: use this.Content to load your game content here
-			ball.Load( Content );
-			player.Load( Content );
-            tiro.Load(Content);
+            // TODO: use this.Content to load your game content here
+            world.LoadObjects(Content);
 		}
 
 		/// <summary>
@@ -83,13 +71,10 @@ namespace MonoGame
 			if( GamePad.GetState( PlayerIndex.One ).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown( Keys.Escape ) )
 				Exit();
 
-			// TODO: Add your update logic here
-			ball.Move( gameTime );
-			player.Update( gameTime );
-            player.TentaAtirar(tiro);
-            tiro.Update(gameTime);
+            // TODO: Add your update logic here
+            world.UpdateObjects(gameTime);
 
-			base.Update( gameTime );
+            base.Update( gameTime );
 		}
 
 		/// <summary>
@@ -102,9 +87,7 @@ namespace MonoGame
 
 			// TODO: Add your drawing code here
 			spriteBatch.Begin();
-			ball.Draw( spriteBatch );
-			player.Draw( spriteBatch );
-            tiro.Draw(spriteBatch);
+            world.DrawObjects(spriteBatch);
 			spriteBatch.End();
 
 			base.Draw( gameTime );

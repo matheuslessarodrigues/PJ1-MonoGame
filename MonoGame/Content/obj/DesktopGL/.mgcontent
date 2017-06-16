@@ -4,10 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/BallSprite.png</File>
-    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/PokemonSprite.png</File>
-    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/SpriteSprite.jpg</File>
-    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/Chico.png</File>
-    <File>C:/Workspace/MonoGame/pj1-monogame/MonoGame/Content/Pkmn.png</File>
+    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/BallSprite.png</File>
+    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman1.png</File>
+    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman2.png</File>
+    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman3.png</File>
+    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman4.png</File>
+    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman1b.png</File>
   </SourceFiles>
 </SourceFileCollection>
