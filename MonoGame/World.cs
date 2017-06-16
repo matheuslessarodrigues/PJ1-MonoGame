@@ -7,47 +7,49 @@ namespace MonoGame
 {
     public class World
     {
-        private List<GameObject> objetos;
+        private List<GameObject> gameObjects;
         private ContentManager content;
 
         public void InstantiateObject(GameObject gameObject)
         {
-            objetos.Add(gameObject);
+            gameObjects.Add(gameObject);
             gameObject.world = this;
             gameObject.Load(content);
         }
 
         public void LoadObjects(ContentManager contentManager)
         {
-            objetos = new List<GameObject>();
+            gameObjects = new List<GameObject>();
             content = contentManager;
 
             InstantiateObject(new Ball());
-            objetos[0].velocity = new Vector2(100.0f, 100.0f);
+            gameObjects[0].velocity = new Vector2(100.0f, 100.0f);
 
-            InstantiateObject(new Tiro());
-            objetos[1].scale = 0.1f;
+			Ball ball = new Ball();
+			InstantiateObject( ball );
+			gameObjects[1].position = new Vector2( 10, 10 );
 
-            InstantiateObject(new Player());
-            objetos[2].position = new Vector2(100.0f, 100.0f);
+			InstantiateObject(new Tiro());
+            gameObjects[2].scale = 0.1f;
 
-            InstantiateObject(new Ball());
-            objetos[3].position = new Vector2(10, 10);
-            objetos[3].scale = 1.0f;
+			Player player = new Player();
+			player.ball = ball;
+            InstantiateObject(player);
+            gameObjects[3].position = new Vector2(100.0f, 100.0f);
         }
 
         public void UpdateObjects(GameTime gameTime)
         {
-            for(int i = 0; i < objetos.Count; i++)
+            for(int i = 0; i < gameObjects.Count; i++)
             {
-                GameObject obj = objetos[i];
+                GameObject obj = gameObjects[i];
                 obj.Update(gameTime);
             }
         }
 
         public void DrawObjects(SpriteBatch spriteBatch)
         {
-            foreach (GameObject obj in objetos)
+            foreach (GameObject obj in gameObjects)
             {
                 obj.Draw(spriteBatch);
             }

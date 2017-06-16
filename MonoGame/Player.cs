@@ -2,12 +2,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Linq;
 
 namespace MonoGame
 {
 	public class Player : GameObject
 	{
+		public GameObject ball;
+
         private bool estavaPressionado = false;
 
 		public override void Load( ContentManager content )
@@ -19,6 +20,9 @@ namespace MonoGame
             animation.textures[3] = content.Load<Texture2D>("megaman4");
 
             scale = 5.0f;
+
+			collider.offset = new Vector2( 10.0f, 0.0f );
+			collider.size = new Vector2( 100.0f, 120.0f );
         }
 
 		public override void Update( GameTime gameTime )
@@ -35,6 +39,11 @@ namespace MonoGame
             animation.Animate(gameTime);
 
             TentaAtirar();
+
+			if( BoxCollider.AreColliding( this, ball ) )
+				color = Color.Red;
+			else
+				color = Color.White;
         }
 
         public void TentaAtirar()
@@ -43,7 +52,7 @@ namespace MonoGame
             {
                 Tiro tiro = new Tiro();
                 tiro.position = position;
-                tiro.velocity = new Vector2(1000.0f, 0.0f);
+                tiro.velocity = new Vector2(-1000.0f, 0.0f);
 
                 world.InstantiateObject(tiro);
             }

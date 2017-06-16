@@ -13,6 +13,8 @@ namespace MonoGame
             animation.textures = new Texture2D[1];
             animation.textures[0] = content.Load<Texture2D>("BallSprite");
             scale = 1.0f;
+
+			collider.size = new Vector2( 150.0f, 150.0f );
         }
 
         public override void Update( GameTime gameTime )

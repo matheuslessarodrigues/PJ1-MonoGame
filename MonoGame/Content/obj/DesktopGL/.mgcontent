@@ -4,11 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/BallSprite.png</File>
-    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman1.png</File>
-    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman2.png</File>
-    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman3.png</File>
-    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman4.png</File>
-    <File>C:/Users/matheus.lessa/Downloads/PJ1-MonoGame-master/MonoGame/Content/megaman1b.png</File>
+    <File>D:/Workspace/DotNet/PJ1-MonoGame/MonoGame/Content/BallSprite.png</File>
+    <File>D:/Workspace/DotNet/PJ1-MonoGame/MonoGame/Content/megaman1.png</File>
+    <File>D:/Workspace/DotNet/PJ1-MonoGame/MonoGame/Content/megaman2.png</File>
+    <File>D:/Workspace/DotNet/PJ1-MonoGame/MonoGame/Content/megaman3.png</File>
+    <File>D:/Workspace/DotNet/PJ1-MonoGame/MonoGame/Content/megaman4.png</File>
+    <File>D:/Workspace/DotNet/PJ1-MonoGame/MonoGame/Content/megaman1b.png</File>
   </SourceFiles>
 </SourceFileCollection>
